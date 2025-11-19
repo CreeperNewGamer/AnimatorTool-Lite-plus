@@ -42,11 +42,23 @@ local function popup(elementToDestory, gui, name)
 	title.Parent = frame
 	title.BackgroundColor3 = ACCLR
 
+	local titleText = Instance.new("TextLabel")
+	titleText.AutomaticSize = Enum.AutomaticSize.XY
+	titleText.Name = "TitleText"
+	titleText.Text = name
+	titleText.Size = UDim2.new(0, 0, 0, 0)
+	titleText.Parent = title
+	titleText.LayoutOrder = 1
+	titleText.BackgroundTransparency = 1
+	titleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+	
 	local listLayout = Instance.new("UIListLayout")
 	listLayout.FillDirection = Enum.FillDirection.Horizontal
 	listLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 	listLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	listLayout.Parent = title
+	listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	listLayout.HorizontalFlex = "SpaceBetween"
 
 	local padding = Instance.new("UIPadding")
 	
@@ -68,6 +80,7 @@ local function popup(elementToDestory, gui, name)
 	button.TextColor3 = Color3.fromRGB(255, 255, 255)
 	button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	button.BackgroundTransparency = 0.6
+	button.LayoutOrder = 2
 	button.MouseButton1Click:Connect(function() 
 		if elementToDestory then
 			elementToDestory:Destroy()
